@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
+<title>New User</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<title>login</title>
-
 <style>
 .container {
 	width: 100%;
@@ -29,18 +27,24 @@
 	width: 20%;
 	height: 90%;
 	float: left;
+	border: 1px solid;
+	background-color: #f1f1f1;
 }
 
 .right-col {
 	width: 20%;
 	height: 90%;
 	float: left;
+	border: 1px solid;
+	overflow: auto;
+	background-color: #f1f1f1;
 }
 
 .center-col {
 	width: 60%;
 	height: 90%;
 	float: left;
+	border: 1px solid;
 }
 
 .footer {
@@ -59,7 +63,7 @@ form{
 }
 </style>
 </head>
-    <body>
+<body>
         <div class="container">
             <div class="navbar  navbar-inverse">
                 <div class="navbar-header">
@@ -78,28 +82,41 @@ form{
                         <li><a href="#">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/ithakaProjectManagementApp/admin/dashboard"><span class="glyphicon glyphicon-log-in"></span>Dashboard</a></li>
+                        <li><li><a href="/ithakaProjectManagementApp/logout"><span class="glyphicon glyphicon-log-in"></span>LogOut</a></li>
                     </ul>
                 </div>
             </div>
              <div class="left-col">
               </div>     
               <div class="center-col">
-              	<div class="form-div">
-                 <form name='loginform' action="<c:url value="j_spring_security_check" />" method='POST'>
-					<c:if test="${param.error == 'true'}">
-						Login Failed <br />
-						Reason: ${SessionScope['SPRING_SECURITY_LAST_EXCEPTION'].message}
-					</c:if>
+              <div class="form-div">
+              	<form name='newUserform' action="/ithakaProjectManagementApp/admin/newUser/save" method='POST'>
 					<div class="container" id="frm">
 						<div class="form-group">
         					<label for="inputUsername">UserName</label>
-        					<input type="text" class="form-control" placeholder="Enter Username" id="inputUsername" name="j_username"  required/>
+        					<input type="text" class="form-control" placeholder="Enter Username"
+        						 id="inputUsername" name="userName" pattern="[A-Za-z]{3,}" title="Name sould be minimum 3 character"  required/>
+    					</div>
+    					<div class="form-group">
+        					<label for="inputUid">User Id</label>
+        					<input type="text" class="form-control" placeholder="Enter UID" id="inputUid" pattern="[A-Za-z]{3,}" name="userId" 
+        					title="Name sould be minimum 3 character" required/>
     					</div>
     					<div class="form-group">
         					<label for="inputPassword">Password</label>
-        					<input type="password" class="form-control" placeholder="Enter Password" id="inputPassword" name="j_password"  required/>
+        					<input type="password" class="form-control" placeholder="Enter Password" id="inputPassword" name="password"  required/>
     					</div>
-    					<button type="submit" class="btn btn-primary">Login</button>
+    					<div class="form-group">
+        					<label for="inputEnabled">Enabled</label>
+        					<input type="text" class="form-control" placeholder="Enter Enabled" id="inputEnabled" pattern="[0-2]" 
+        					title="Number should be in range 0-2" name="enabled"  required/>
+    					</div>
+    					<div class="form-group">
+        					<label for="inputEmail">Email Id</label>
+        					<input type="text" class="form-control" placeholder="Enter Email" id="inputEmail" name="emailId"  required/>
+    					</div>
+    					<button type="submit" class="btn btn-primary">Register</button>
     					<button type="reset" class="btn btn-primary">Reset</button>						
 					</div>
 				</form>
@@ -108,11 +125,14 @@ form{
               <div class="right-col ">
              </div>
             <div class="footer">
-                footer
+            	<c:if test="${not empty message }">
+            	  <h5>${message }</h5>
+            	</c:if>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
     </body>
-</html>
+    
+    </html>

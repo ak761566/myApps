@@ -6,6 +6,8 @@ public class Inventory {
 
 	private String setupNo;
 	private String streamName;
+	private String streamType;
+	private String Complexity;
 	private int batchCount;
 	private Date kickOffDate;
 	private Date dueDate;
@@ -61,5 +63,18 @@ public class Inventory {
 	public void setIterations(int iterations) {
 		this.iterations = iterations;
 	}
+	public String getStreamType() {
+		return streamType;
+	}
+	public void setStreamType(String streamType) {
+		this.streamType = streamType;
+	}
+	public String getComplexity() {
+		return Complexity;
+	}
+	public void setComplexity(String complexity) {
+		Complexity = complexity;
+	}
+	
 	
 }

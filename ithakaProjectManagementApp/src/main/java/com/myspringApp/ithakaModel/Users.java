@@ -5,7 +5,7 @@ public class Users {
 private String userName;
 private String userId;
 private String password;
-private String enabled;
+private int enabled;
 private String emailId;
 
 public String getUserName() {
@@ -26,10 +26,10 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-public String getEnabled() {
+public int getEnabled() {
 	return enabled;
 }
-public void setEnabled(String enabled) {
+public void setEnabled(int enabled) {
 	this.enabled = enabled;
 }
 public String getEmailId() {
