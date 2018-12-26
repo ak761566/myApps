@@ -7,7 +7,8 @@ public class Inventory {
 	private String setupNo;
 	private String streamName;
 	private String streamType;
-	private String Complexity;
+	private String complexity;
+	
 	private int batchCount;
 	private Date kickOffDate;
 	private Date dueDate;
@@ -70,11 +71,12 @@ public class Inventory {
 		this.streamType = streamType;
 	}
 	public String getComplexity() {
-		return Complexity;
+		return complexity;
 	}
 	public void setComplexity(String complexity) {
-		Complexity = complexity;
+		this.complexity = complexity;
 	}
+	
 	
 	
 }

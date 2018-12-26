@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin Dashboard</title>
+<title>User DashBoard</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
@@ -22,24 +22,14 @@
 }
 
 .left-col {
-	width: 10%;
+	width: 49%;
 	height: 90%;
 	float: left;
 	border: 1px solid;
 	background-color: #f1f1f1;
 }
-
-.right-col {
-	width: 5%;
-	height: 90%;
-	float: left;
-	border: 1px solid;
-	overflow: auto;
-	background-color: #f1f1f1;
-}
-
 .center-col {
-	width: 85%;
+	width: 2%;
 	height: 90%;
 	float: left;
 	border: 1px solid;
@@ -47,11 +37,23 @@
 	
 }
 
+.right-col {
+	width: 49%;
+	height: 90%;
+	float: left;
+	border: 1px solid;
+	overflow: auto;
+	background-color: #f1f1f1;
+}
+
+
 .footer {
 	max-width: 100%;
 	height: 5%;
 }
 </style>
+
+</head>
 <body>
 <div class="container">
             <div class="navbar  navbar-inverse">
@@ -66,8 +68,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a href="/ithakaProjectManagementApp/admin/project">Project</a></li>
-                        <li><a href="/ithakaProjectManagementApp/admin/newUser">Team</a></li>
+                        <!-- <li><a href="/ithakaProjectManagementApp/admin/project">Project</a></li>
+                        <li><a href="/ithakaProjectManagementApp/admin/newUser">Team</a></li> -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                        <li><a href="/ithakaProjectManagementApp/logout">Logout</a></li>
@@ -75,9 +77,12 @@
                 </div>
             </div>
              <div class="left-col">
-              	Admin Dashboard
+              	User Dashboard
               </div>     
               <div class="center-col">
+                  
+              </div>
+              <div class="right-col ">
                   <table class="table table-bordered">
                   	<tr>
                   		<th>Setup No</th>
@@ -89,10 +94,7 @@
                   		<th>Activity Status</th>
                   		<th>Activity Remark</th>
                   	</tr>  
-                  </table>
-              </div>
-              <div class="right-col ">
-                    
+                  </table>  
              </div>
             <div class="footer">
                 footer
@@ -102,5 +104,4 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
     </body>
-
 </html>

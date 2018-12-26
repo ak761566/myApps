@@ -10,5 +10,6 @@ public interface userDao {
 	public List<Users> getAllUsers();
 	public Users getUserById(String userId);
 	public void updateUser(Users user);
+	public Users getUserInfo(String userName);
 
 }

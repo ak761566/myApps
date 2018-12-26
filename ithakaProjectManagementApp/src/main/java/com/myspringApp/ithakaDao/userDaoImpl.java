@@ -86,5 +86,27 @@ public class userDaoImpl implements userDao {
 		
 	}
 
+	public Users getUserInfo(String userId) {
+		String sql = "select users.userName, users.userId, users.password, users.emailId, user_roles.userRole from"
+				+ " users JOIN user_roles ON users.userId = user_roles.roleID where users.enabled = 1 and users.userName = ?";
+		
+		Users userinfo = jdbcTemplate.queryForObject(sql, new Object[] {userId}, new RowMapper<Users>() {
+
+			public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Users user = new Users();
+				user.setUserName(rs.getString(1));
+				user.setUserId(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setEmailId(rs.getString(4));
+				user.setUserRole(rs.getString(5));
+				return user;
+			}
+		});
+		
+		return userinfo;
+	}
+
+	
+	
 	
 }//end of userDemoImpl class

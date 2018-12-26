@@ -35,6 +35,15 @@ public class userController {
 		
 	}
 	
+		/* User Controller */
+	
+	@RequestMapping(value="/user/dashboard", method = RequestMethod.GET)
+	public ModelAndView userPage(Principal principal) {
+		ModelAndView model = new ModelAndView("userDashboard");
+		model.addObject("name", principal.getName());
+		return model;
+	}
+	
 	@RequestMapping(value="/admin/dashboard", method = RequestMethod.GET)
 	public ModelAndView adminPage(Principal principal) {
 		ModelAndView model = new ModelAndView("adminDashboard");
@@ -42,8 +51,7 @@ public class userController {
 		return model;
 		
 	}
-	
-	
+
 	@RequestMapping(value="/admin/newStream", method = RequestMethod.GET)
 	public ModelAndView newStream(Principal principal) {
 		ModelAndView model = new ModelAndView("newStream");

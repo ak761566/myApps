@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 }
 
 .left-col {
-	width: 49%;
+	width: 59%;
 	height: 90%;
 	float: left;
 	border: 1px solid;
@@ -40,7 +41,7 @@
 }
 
 .center-col {
-	width: 49%;
+	width: 39%;
 	height: 90%;
 	float: left;
 	border: 1px solid;
@@ -51,14 +52,14 @@
 	height: 5%;
 }
 form{
-	width: 60%;
+	width: 90%;
 	align: center;
 }
 
 .form-div{
 	width: 100%
 	padding: 10%;
-	margin:20px 0px 100px 100px;
+	margin:20px 20px 100px 70px;
 }
 .users-div{
 	width: 100%
@@ -116,7 +117,7 @@ form{
                     						<tr>
                     							<td>${inventory.setupNo}</td>
                     							<td>${inventory.streamName}</td>
-                    							<td>${inventory.Complexity}</td>
+                    							<td>${inventory.complexity}</td>
                     							<td>${inventory.streamType}</td>
                     							<td>${inventory.batchCount}</td>
                     							<td>${inventory.kickOffDate}</td>
@@ -144,19 +145,18 @@ form{
     					<div class="form-group">
         					<label for="inputSreamName">Stream Name</label>
         					<input type="text" class="form-control" placeholder="Enter Stream Name"
-        					 id="inputSreamName" pattern="[A-Za-z]{3,}" name="streamName" 
-        					 required/>
+        					 id="inputSreamName" pattern="[A-Za-z]{3,}" name="streamName" required/>
     					</div>
     					<div class="form-group">
         					<label for="inputstreamType">Stream Type</label>
-        					<select name="streamType" required>
+        					<select name="streamType" id="inputstreamType" required>
         						<option value="new">New</option>
         						<option value="maintenance">Maintenance</option>
         					</select>
     					</div>
     					<div class="form-group">
         					<label for="inputComplexity">Complexity</label>
-        					<select name="Complexity" required>
+        					<select name="complexity" id="inputComplexity" required>
         						<option value="easy">Easy</option>
         						<option value="medium">Medium</option>
         						<option value="complex">Complex</option>
@@ -170,16 +170,19 @@ form{
     				
     					<div class="form-group">
         					<label for="inputkickOffDate">Kick Off Date</label>
-        					<input type="text" class="form-control" placeholder="Enter Date in DD-MM-YYYY" id="inputkickOffDate" pattern="[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}" 
-        					title="Date should be in DD-MM-YYYY" name="kickOffDate"  required/>
+        					<input type="text" class="form-control" placeholder="dd/MM/YYYY"
+        					 id="inputkickOffDate" pattern="[0-9]{1,2}[\\/][0-9]{1,2}[\\/][0-9]{4}"
+        					title="Date should be in DD/MM/YYYY format" name="kickOffDate"  required/>
+        					
     					</div>
     					<div class="form-group">
         					<label for="inputdueDate">Due Date</label>
-        					<input type="text" class="form-control" placeholder="Enter Due Date" id="inputdueDate" name="dueDate"  
-        					pattern="[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}" title="Date should be in DD-MM-YYYY"  required/>
+        					<input type="text" class="form-control" placeholder="Enter Due Date"
+        					 id="inputdueDate" name="dueDate"  
+        					pattern="[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}" title="Date should be in DD/MM/YYYY format"  required/>
     					</div>
     					<!-- <div class="form-group">
-        					<label for="inputdeliveryDate">Delivery Date</label>
+        						<label for="inputdeliveryDate">Delivery Date</label>
         					<input type="text" class="form-control" placeholder="Enter Deliver Date" id="inputdeliveryDate" name="deliveryDate"  
         					pattern="[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}" title="Date should be in DD-MM-YYYY"/>
     					</div>

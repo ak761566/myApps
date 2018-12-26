@@ -7,6 +7,7 @@ private String userId;
 private String password;
 private int enabled;
 private String emailId;
+private String userRole;
 
 public String getUserName() {
 	return userName;
@@ -38,6 +39,13 @@ public String getEmailId() {
 public void setEmailId(String emailId) {
 	this.emailId = emailId;
 }
+public String getUserRole() {
+	return userRole;
+}
+public void setUserRole(String userRole) {
+	this.userRole = userRole;
+}
 	
-	
+
+
 }

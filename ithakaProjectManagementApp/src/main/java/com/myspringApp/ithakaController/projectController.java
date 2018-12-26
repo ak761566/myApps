@@ -1,6 +1,9 @@
 package com.myspringApp.ithakaController;
 
 import java.security.Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -24,58 +27,60 @@ public class projectController {
 	
 	@RequestMapping(value="/admin/project", method = RequestMethod.GET)
 	public ModelAndView  projectPage(Principal principal) {
-		ModelAndView model = new ModelAndView("newStream");
-		/*
-		 * List<Inventory> inventorylist = projectdao.listProjects();
-		 * model.addObject("inventorylist", inventorylist);
-		 */
-		
+			ModelAndView model = new ModelAndView("newStream");
+		  List<Inventory> inventorylist = projectdao.listProjects();
+		  model.addObject("inventorylist", inventorylist);
 		return model;
 	}
 	
 	@RequestMapping(value="/admin/newStream/save", method = RequestMethod.POST)
-	public ModelAndView saveNewStream(@RequestParam Map<String, String> inventory) {
+	public ModelAndView saveNewStream(@RequestParam Map<String, String> inven,
+			@ModelAttribute("inventory") Inventory inventory) {
+		
 		ModelAndView model = new ModelAndView("newStream");
 		
-		  System.out.println(inventory.get("setupNo"));
+		String dateFormat = "dd/MM/yyyy";
+		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+		Date kickoffdate = null;
+		Date duedate = null;
 		
-		/*
-		 * try { if(projectdao.getProjectById(inventory.getSetupNo()) != null) {
-		 * //Stream all ready present in the DataBase; } } catch(Exception e) {
-		 * 
-		 * projectdao.addNewProject(inventory); }
-		 * 
-		 * List<Inventory> inventorylist = projectdao.listProjects();
-		 * model.addObject("inventorylist", inventorylist);
-		 */
+		try {
+			kickoffdate = sdf.parse(inven.get("kickOffDate"));
+			duedate = sdf.parse(inven.get("dueDate"));
+			
+			inventory.setKickOffDate(kickoffdate);
+			inventory.setDueDate(duedate);
+			
+			} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+		
+		   //System.out.println("Map " + inven.get("kickOffDate"));
+		  //System.out.println("Object " + inventory.getKickOffDate());
 		 
-		return model;
-	}
-	
-	@RequestMapping(value="/admin/project/save", method = RequestMethod.POST)
-	//public ModelAndView  saveProject(@ModelAttribute("inventory") Inventory inventory)
-	public ModelAndView  saveProject()
-	{
-		ModelAndView model = new ModelAndView("newStream");
-		
 		/*
 		 * System.out.println(inventory.getSetupNo() + " " + inventory.getStreamName() +
 		 * " " + inventory.getStreamType() + " " + inventory.getComplexity() + " " +
 		 * inventory.getBatchCount() + " " + inventory.getKickOffDate() + " " +
 		 * inventory.getDueDate());
 		 */
-		
-		/*
-		 * try { if(projectdao.getProjectById(inventory.getSetupNo()) != null) {
-		 * 
-		 * //Stream all ready present in the DataBase; } }catch(Exception e) {
-		 * 
-		 * projectdao.addNewProject(inventory); }
-		 * 
-		 * List<Inventory> inventorylist = projectdao.listProjects();
-		 * model.addObject("inventorylist", inventorylist);
-		 */
-		return model;
+		  
+		try 
+			{ if(projectdao.getProjectById(inventory.getSetupNo()) != null)
+				{
+					//Stream all ready present in the DataBase; 
+				} 
+			} catch(Exception e) {
+		  
+		  projectdao.addNewProject(inventory); 
+		  }
+		  
+		  List<Inventory> inventorylist = projectdao.listProjects();
+		  model.addObject("inventorylist", inventorylist);
+
+		  return model;
 	}
+	
 	
 }

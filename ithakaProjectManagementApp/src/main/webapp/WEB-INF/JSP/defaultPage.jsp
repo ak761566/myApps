@@ -68,7 +68,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/ithakaProjectManagementApp/admin/dashboard"><span class="glyphicon glyphicon-log-in"></span>Admin</a></li>
-        				<li><a href="/ithakaProjectManagementApp/user"><span class="glyphicon glyphicon-log-in"></span>User</a></li>
+        				<li><a href="/ithakaProjectManagementApp/user/dashboard"><span class="glyphicon glyphicon-log-in"></span>User</a></li>
                     </ul>
                 </div>
             </div>
