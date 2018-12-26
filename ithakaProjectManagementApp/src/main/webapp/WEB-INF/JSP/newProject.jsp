@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>new Stream</title>
+<title>New Project</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
@@ -51,14 +51,14 @@
 	height: 5%;
 }
 form{
-	width: 60%;
+	width: 40%;
 	align: center;
 }
 
 .form-div{
 	width: 100%
 	padding: 10%;
-	margin:20px 0px 100px 100px;
+	margin:20px 0px 100px 200px;
 }
 .users-div{
 	width: 100%
@@ -68,6 +68,7 @@ form{
 
 }
 </style>
+
 </head>
 <body>
         <div class="container">
@@ -87,14 +88,14 @@ form{
                         <li><a href="#">Projects</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
-                     <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="/ithakaProjectManagementApp/admin/dashboard"><span class="glyphicon glyphicon-log-in"></span>DashBoard</a></li>
                         <li><a href="/ithakaProjectManagementApp/logout">Logout</a></li>
                     </ul>
                 </div>
             </div>
              <div class="left-col">
-             	<c:choose>
+                    <c:choose>
                     	<c:when test="${empty inventorylist}">
                     		<h3>No Streams in the database !</h3>
                     	</c:when>
@@ -130,72 +131,59 @@ form{
                     		
                     	</c:otherwise>
                     </c:choose>
+                    
               </div>     
               <div class="center-col">
-              <div class="form-div">
-              	<form name='newUserform' action="/ithakaProjectManagementApp/admin/newStream/save" method='POST'>
-					<div class="form-div" id="frm">
+                  <div class="form-div">
+              	<form name='newUserform' action="/ithakaProjectManagementApp/admin/project/save" method="POST">
+					<div class="container" id="frm">
 						<div class="form-group">
-        					<label for="inputsetupNo">Setup No</label>
-        					<input type="text" class="form-control" placeholder="Enter Setup No"
-        						 id="inputsetupNo" name="setupNo" pattern="SETUP\-[0-9]{3,}" 
-        						 title="Enter valid SETUP NO Please"  required/>
+        					<label for="setupNo">Setup Number</label>
+        					<input type="text" class="form-control" placeholder="Setup Number"
+        						 id="setupNo" name="setupNo"
+        						  title="Required Pattern SETUP-XXXX"  required/>
+        						  
+        						<label for="streamName">Stream Name</label>
+        						<input type="text" class="form-control" placeholder="Stream Name"
+        							 id="streamName" name="streamName"
+        						  	title="Stream Name"  required/>
+        						
+        						<label for="streamType">Stream Type</label>
+        						<br/>
+        						<select name="streamType" required="required">
+									<option value="new">New Setup</option>
+									<option value="maintenace">Maintenace</option>
+								</select>
+        						  	
+        						<label for="complexity">Complexity</label>
+        						<br/>
+        						<select name="Complexity" required="required">
+									<option value="easy">Easy</option>
+									<option value="medium">Medium</option>
+									<option value="complex">Complex</option>		        						
+        						</select>
+        						<label for="batchCount">Batch Count</label>
+        						<input type="text" class="form-control" placeholder="Number Of Batches"
+        							 id="batchCount" name="batchCount"
+        						  	title="only digits"  required/>
+        						  	
+        						<label for="kickOffDate">Kick Off Date</label>
+        						<input type="text" class="form-control" placeholder="DD-MM-YYYY"
+        							 id="kickOffDate" name="kickOffDate"
+        						  	title="date should be in the format of DD-MM-YYYY"  required/>
+        						  	
+        						 <label for="dueDate">Due Date</label>
+        						<input type="text" class="form-control" placeholder="DD-MM-YYYY"
+        							 id="dueDate" name="dueDate"
+        						  	title="date should be in the format of DD-MM-YYYY"  required/>
     					</div>
-    					<div class="form-group">
-        					<label for="inputSreamName">Stream Name</label>
-        					<input type="text" class="form-control" placeholder="Enter Stream Name"
-        					 id="inputSreamName" pattern="[A-Za-z]{3,}" name="streamName" 
-        					 required/>
-    					</div>
-    					<div class="form-group">
-        					<label for="inputstreamType">Stream Type</label>
-        					<select name="streamType" required>
-        						<option value="new">New</option>
-        						<option value="maintenance">Maintenance</option>
-        					</select>
-    					</div>
-    					<div class="form-group">
-        					<label for="inputComplexity">Complexity</label>
-        					<select name="Complexity" required>
-        						<option value="easy">Easy</option>
-        						<option value="medium">Medium</option>
-        						<option value="complex">Complex</option>
-        					</select>
-    					</div>
-    					<div class="form-group">
-        					<label for="inputBatchCount">Batch Count</label>
-        					<input type="text" class="form-control" placeholder="Enter Batch Count"
-        					 id="inputBatchCount" pattern="[0-9]+" name="batchCount"  required/>
-    					</div>
-    				
-    					<div class="form-group">
-        					<label for="inputkickOffDate">Kick Off Date</label>
-        					<input type="text" class="form-control" placeholder="Enter Date in DD-MM-YYYY" id="inputkickOffDate" pattern="[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}" 
-        					title="Date should be in DD-MM-YYYY" name="kickOffDate"  required/>
-    					</div>
-    					<div class="form-group">
-        					<label for="inputdueDate">Due Date</label>
-        					<input type="text" class="form-control" placeholder="Enter Due Date" id="inputdueDate" name="dueDate"  
-        					pattern="[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}" title="Date should be in DD-MM-YYYY"  required/>
-    					</div>
-    					<!-- <div class="form-group">
-        					<label for="inputdeliveryDate">Delivery Date</label>
-        					<input type="text" class="form-control" placeholder="Enter Deliver Date" id="inputdeliveryDate" name="deliveryDate"  
-        					pattern="[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}" title="Date should be in DD-MM-YYYY"/>
-    					</div>
-    					<div class="form-group">
-        					<label for="inputstreamStatus">Stream Status</label>
-        					<input type="text" class="form-control" placeholder="Enter Stream Status" id="inputstreamStatus" pattern="[A-Za-z]{3,}" name="streamStatus"/>
-    					</div>
-    					<div class="form-group">
-        					<label for="inputiterations">Iteration Count</label>
-        					<input type="text" class="form-control" placeholder="Iteration Count" id="inputstreamStatus" pattern="[0-9]+" name="iterations"/>
-    					</div> -->
-    					<button type="submit" class="btn btn-primary">Register</button>
+    					
+    					<button type="submit" class="btn btn-primary">Add Stream</button>
     					<button type="reset" class="btn btn-primary">Reset</button>						
 					</div>
 				</form>
 				</div>
+                  
               </div>
               <div class="right-col ">
              </div>
@@ -204,5 +192,6 @@ form{
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
+        
+    </body>
 </html>

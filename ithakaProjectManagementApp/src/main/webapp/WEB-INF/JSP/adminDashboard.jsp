@@ -66,9 +66,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a href="/ithakaProjectManagementApp/admin/newStream">New Project</a></li>
-                        <li><a href="/ithakaProjectManagementApp/admin/newUser">New User</a></li>
-                        <li><a href="#">All Projects</a></li>
+                        <li><a href="/ithakaProjectManagementApp/admin/project">Project</a></li>
+                        <li><a href="/ithakaProjectManagementApp/admin/newUser">Team</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                        <li><a href="/ithakaProjectManagementApp/logout">Logout</a></li>

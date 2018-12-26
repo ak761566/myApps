@@ -24,7 +24,7 @@
 }
 
 .left-col {
-	width: 20%;
+	width: 49%;
 	height: 90%;
 	float: left;
 	border: 1px solid;
@@ -32,7 +32,7 @@
 }
 
 .right-col {
-	width: 20%;
+	width: 2%;
 	height: 90%;
 	float: left;
 	border: 1px solid;
@@ -41,7 +41,7 @@
 }
 
 .center-col {
-	width: 60%;
+	width: 49%;
 	height: 90%;
 	float: left;
 	border: 1px solid;
@@ -60,6 +60,13 @@ form{
 	width: 100%
 	padding: 10%;
 	margin:20px 0px 100px 200px;
+}
+.users-div{
+	width: 100%
+	padding: 10%;
+	margin:20px 0px 100px 50px;
+	float:auto;
+
 }
 </style>
 </head>
@@ -88,6 +95,34 @@ form{
                 </div>
             </div>
              <div class="left-col">
+				<c:choose>
+					<c:when test="${empty usersList }">
+						<h3>No User has been Added.</h3>
+					</c:when>
+					<c:otherwise>
+					<div class="users-div">
+						<h3>Team Details</h3>
+						<table class="table table-responsive">
+							<tr>
+								<th>User Name</th>
+								<th>User Id</th>
+								<th>Password</th>
+								<th>Enabled</th>
+								<th>Email Id</th>
+							</tr>
+							<c:forEach items="${usersList }" var="user">
+								<tr>
+									<td>${user.userName}</td>
+									<td>${user.userId}</td>
+									<td>${user.password}</td>
+									<td>${user.enabled}</td>
+									<td>${user.emailId}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					</c:otherwise>
+				</c:choose>             
               </div>     
               <div class="center-col">
               <div class="form-div">

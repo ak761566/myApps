@@ -1,6 +1,7 @@
 package com.myspringApp.ithakaController;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -54,7 +55,10 @@ public class userController {
 	@RequestMapping(value="/admin/newUser", method = RequestMethod.GET)
 	public ModelAndView newUser(Principal principal) {
 		ModelAndView model = new ModelAndView("NewUser");
+		List<Users> userslist = userdao.getAllUsers();
+		
 		model.addObject("name", principal.getName());
+		model.addObject("usersList", userslist);
 		return model;
 		
 	}
@@ -62,11 +66,13 @@ public class userController {
 	@RequestMapping(value="/admin/newUser/save", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute("user") Users user, Principal principal) {
 		ModelAndView model = new ModelAndView("NewUser");
+		List<Users> userslist = userdao.getAllUsers();
+		
 		model.addObject("name", principal.getName());
-		//System.out.println("userName" + user.getUserName() + " principal " + principal.getName());
+		model.addObject("usersList", userslist);
+		
 		  try { 
-			  System.out.println(1); 
-				  if(userdao.getUserById(user.getUserId()) != null) 
+			    if(userdao.getUserById(user.getUserId()) != null) 
 				  { 
 					  System.out.println(2); 
 					  userdao.updateUser(user);
@@ -74,7 +80,6 @@ public class userController {
 				 }
 			 }catch(EmptyResultDataAccessException e) 
 		        { 
-				 System.out.println(3);
 		  userdao.addUser(user); 
 		  model.addObject("message", "New User Record has been added successfuly"); 
 		  }
