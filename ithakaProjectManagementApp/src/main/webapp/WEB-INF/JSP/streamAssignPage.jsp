@@ -114,7 +114,7 @@
                   			<td>${inventory.kickOffDate}</td>
                   			<td>${inventory.dueDate}</td>
                   			<td><a href="${inventory.setupNo}">Status</a></td>
-                  			<td><a href="${inventory.setupNo}">${loggedUserName}</a></td>
+                  			<td><a href="/ithakaProjectManagementApp/user/task/${inventory.setupNo}">${loggedUserName}</a></td>
                   		</tr>
                   	
                   	</c:forEach>
