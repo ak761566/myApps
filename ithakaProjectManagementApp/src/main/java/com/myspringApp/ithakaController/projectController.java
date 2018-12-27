@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +33,7 @@ public class projectController {
 		  List<Inventory> inventorylist = projectdao.listProjects();
 		  model.addObject("inventorylist", inventorylist);
 		return model;
-	}
+	}//end of method
 	
 	@RequestMapping(value="/admin/newStream/save", method = RequestMethod.POST)
 	public ModelAndView saveNewStream(@RequestParam Map<String, String> inven,
@@ -80,7 +82,19 @@ public class projectController {
 		  model.addObject("inventorylist", inventorylist);
 
 		  return model;
-	}
+	}//end of method
 	
+	
+	@RequestMapping(value="/user/assignStream")
+	public ModelAndView assignStream() {
+		ModelAndView model = new ModelAndView("streamAssignPage");
+		List<Inventory> inventorylist = projectdao.listProjects();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUserName  = auth.getName();
+		
+		model.addObject("inventorylist", inventorylist);
+		model.addObject("loggedUserName", loggedUserName);
+		return model;
+	}
 	
 }

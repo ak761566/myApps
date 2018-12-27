@@ -68,7 +68,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li class="active"><a href="/ithakaProjectManagementApp/user/assignStream">Assign Stream</a></li>
                         <!-- <li><a href="/ithakaProjectManagementApp/admin/project">Project</a></li>
                         <li><a href="/ithakaProjectManagementApp/admin/newUser">Team</a></li> -->
                     </ul>
