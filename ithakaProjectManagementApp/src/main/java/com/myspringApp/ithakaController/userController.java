@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,14 +42,23 @@ public class userController {
 	@RequestMapping(value="/user/dashboard", method = RequestMethod.GET)
 	public ModelAndView userPage(Principal principal) {
 		ModelAndView model = new ModelAndView("userDashboard");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUserName = auth.getName();
+		
 		model.addObject("name", principal.getName());
+		model.addObject("loggedUserName", loggedUserName);
 		return model;
 	}
 	
 	@RequestMapping(value="/admin/dashboard", method = RequestMethod.GET)
 	public ModelAndView adminPage(Principal principal) {
 		ModelAndView model = new ModelAndView("adminDashboard");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String loggedUserName = auth.getName();
+		
 		model.addObject("name", principal.getName());
+		model.addObject("loggedUserName", loggedUserName);
+		
 		return model;
 		
 	}
@@ -97,8 +108,8 @@ public class userController {
 	
 	@RequestMapping(value="/logoutSuccess", method = RequestMethod.GET)
 	public ModelAndView logoutPage() {
-		ModelAndView model = new ModelAndView("logoutSeccess");
-		model.addObject("title", "Admin Dashboard !");
+		ModelAndView model = new ModelAndView("defaultPage");
+		
 		return model;
 		
 	}

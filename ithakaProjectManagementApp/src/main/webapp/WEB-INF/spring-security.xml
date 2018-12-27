@@ -22,31 +22,36 @@
 			password-parameter="j_password"
 			/>
 		
-	<!-- <form-login login-page="/login" login-processing-url="/j_spring_security_check" 
+	<!-- 
+		<form-login login-page="/login" login-processing-url="/j_spring_security_check" 
 			default-target-url="/admin/dashboard" 
 			authentication-failure-url="/login?error=true"
 			username-parameter="j_username"
 			password-parameter="j_password"
 			/> -->
 			<!-- logout-url="/logout" s/b matched with url given in JSP page -->
-			<!-- logout-success-url="/logoutSuccess s/b matched with url given in controller. -->
+			<!-- logout-success-url="/logoutSuccess s/b matched with url given in controller.
+	 -->
 	<logout logout-url="/logout" logout-success-url="/logoutSuccess"/>
 </http>
 	
-<!-- 	<authentication-manager>
+<!-- 
+	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="select username,password,enabled from users where username=?"
 				authorities-by-username-query="select username, role from users_role where username=?"
 			/>
 		</authentication-provider>
-	<authentication-provider>
+		
+		<authentication-provider>
 	    <user-service>
 			<user name="ak" password="admin" authorities="ROLE_ADMIN" />
 			<user name="alex" password="123456" authorities="ROLE_USER" />
 	    </user-service>
 	 </authentication-provider>
-  </authentication-manager> -->
+  </authentication-manager>
+   -->
   
   
   	<authentication-manager alias="authenticationManager">

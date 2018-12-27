@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +76,7 @@
                 </div>
             </div>
              <div class="left-col">
-              	Admin Dashboard
+              	Admin [${loggedUserName}] Dashboard
               </div>     
               <div class="center-col">
                   <table class="table table-bordered">
