@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -14,6 +15,7 @@ import com.myspringApp.ithakaModel.Users;
 
 public class userDaoImpl implements userDao {
 
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -60,6 +62,27 @@ public class userDaoImpl implements userDao {
 	public Users getUserById(String userId) {
 		String sql = "select * from users where userId = ?";
 		Users user = jdbcTemplate.queryForObject(sql, new Object[] {userId}, new RowMapper<Users>() {
+
+			public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Users user = new Users();
+				
+				user.setUserName(rs.getString(1));
+				user.setUserId(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setEnabled(rs.getInt(4));
+				user.setEmailId(rs.getString(5));
+				
+				return user;
+			}
+			
+			
+		});
+		return user;
+	}
+	
+	public Users getUserByName(String userName) {
+		String sql = "select * from users where userName = ?";
+		Users user = jdbcTemplate.queryForObject(sql, new Object[] {userName}, new RowMapper<Users>() {
 
 			public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Users user = new Users();

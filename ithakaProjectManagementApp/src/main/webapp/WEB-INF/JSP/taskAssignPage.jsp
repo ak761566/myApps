@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,22 +88,49 @@ form{
             </div>
              <div class="left-col">
              	<h5>Stream Status</h5>
+             	<table class="table table-responsive">
+             		<tr>
+             			<th>SETUP NO</th>
+             			<th>STREAM NAME</th>
+             			<th>USER NAME</th>
+             			<th>REMARK</th>
+             			<th>ACTIVITY</th>
+             			<th>STATUS</th>
+             		</tr>
+             		<c:forEach items="${listTransaction }" var="transaction">
+             			<tr>
+             				<td>${transaction.setupNo}</td>
+             				<td>${transaction.streamName}</td>
+             				<td>${transaction.userName}</td>
+             				<td>${transaction.activity_comment}</td>
+             				<td>${transaction.activity}</td>
+             				<td>${transaction.activity_status}</td>
+             			</tr>
+             		</c:forEach>
+             	</table>
               </div>     
               <div class="center-col">
               <div class="form-div">
-              	<form name='taskAssign' action="/ithakaProjectManagement/user/assignTask" method='POST'>
+              									
+              	<form name='taskAssign' action="/ithakaProjectManagementApp/user/task/assign" method="post">
 					<div class="container" id="frm">
 						<div class="form-group">
         					<label for="inputUsername">User Name</label>
         					<input type="text" class="form-control" 
         					placeholder="Enter Username" 
-        					id="inputUsername" name="username" value="${loggedUserName}" disabled="disabled" required/>
+        					id="inputUsername" name="userName" value="${loggedUserName}"  required/>
+    					</div>
+    					<div class="form-group">
+        					<label for="inputUserId">User Id</label>
+        					<input type="text" class="form-control" 
+        					placeholder="Enter UserId" 
+        					id="inputUserId" name="userId" value="${userInfo.userId}"  required/>
     					</div>
     					<div class="form-group">
         					<label for="inputSetupNo">Setup Number</label>
         					<input type="text" class="form-control" 
         					placeholder="Setup Number" 
-        					id="inputUsername" name="username"  required/>
+        					id="inputSetupNo" name="setupNo"  value="${setupNo}"  required/>
     					</div>
     					<div class="form-group">
         					<label for="inputActivity">Activity</label>
@@ -122,18 +150,14 @@ form{
         					<label for="inputSetupNo">Remark</label>
         					<br/>
         					<textarea rows="4" cols="50" name="activity_comment"></textarea>
-        					<!-- <input type="" class="form-control" 
-        					placeholder="Setup Number" 
-        					id="inputUsername" name="username"  required/> -->
     					</div>
     					<button type="submit" class="btn btn-primary">Assign</button>
-    					<button type="reset" class="btn btn-primary">Reset</button>						
+    					<!-- <button type="reset" class="btn btn-primary">Reset</button> -->						
 					</div>
 				</form>
 			  </div>
               </div>
               <div class="right-col ">
-                    
                     right side nav
              </div>
             <div class="footer">

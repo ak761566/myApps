@@ -1,10 +1,12 @@
 package com.myspringApp.ithakaModel;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Transaction {
 	
 	private String setupNo;
+	private String streamName;
+	private String userName;
 	private String userId;
 	private String activity;
 	private Date activity_start_date;
@@ -61,6 +63,19 @@ public class Transaction {
 	public void setActivity_status(String activity_status) {
 		this.activity_status = activity_status;
 	}
+	public String getStreamName() {
+		return streamName;
+	}
+	public void setStreamName(String streamName) {
+		this.streamName = streamName;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 	
 	
 }

@@ -7,7 +7,8 @@ import com.myspringApp.ithakaModel.Transaction;
 public interface transcationDao {
 	
 	public List<Transaction> listActivityByID(String setupNo);
-	public void assignTask(String setupNo, String userName);
+	public void loggTaskInDB(Transaction transcation);
+	
 	
 
 }
